@@ -55,14 +55,13 @@ def iterative_sampling_loop(
 
     iteration = 0
     mutation_prob = 0.1
-    elite_frac = 0.5
+    elite_frac = 0.25
 
     while True:
         iteration += 1
         bt.logging.info(f"[Miner] Iteration {iteration}: sampling {n_samples} molecules")
 
-        sampler_data = run_sampler(
-                        n_samples=n_samples*4 if iteration == 1 else n_samples, 
+        sampler_data = run_sampler(n_samples=n_samples, 
                         subnet_config=config, 
                         output_path=sampler_file_path,
                         save_to_file=True,
